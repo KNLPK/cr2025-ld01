@@ -1,9 +1,6 @@
 package exercise;
 import java.util.Date;
-
-
 public class DecomposeConditional {
-
 	class Stadium {
 		  private final Date SUMMER_START = new Date(1500);
 		  private final Date SUMMER_END = new Date(2500);
@@ -15,7 +12,7 @@ public class DecomposeConditional {
 			  this.winterRate = winter;
 			  this.winterServiceCharge = service;
 		  }
-		  
+
 		  // TODO: change the conditional logic in this method using
 		  //       decompose conditional
 		  public double getTicketPrice(Date date, int quantity) {
@@ -28,7 +25,27 @@ public class DecomposeConditional {
 		    }
 		    return charge;
 		  }
+
+		//TODO condition completed
+		public double getTicketPrice(Date date, int quantity) {
+			if (isWinterSeason(date)) {
+				return calculateWinterCharge(quantity);
+			} 
+			return calculateSummerCharge(quantity);
 		}
+
+		private boolean isWinterSeason(Date date) {
+			return date.before(SUMMER_START) || date.after(SUMMER_END);
+		}
+
+		private double calculateWinterCharge(int quantity) {
+			return quantity * winterRate + winterServiceCharge;
+		}
+
+		private double calculateSummerCharge(int quantity) {
+			return quantity * summerRate;
+		}
+	}
 	public void test() {
 		Stadium s = new Stadium(100, 90, 25);
 		System.out.println(s.getTicketPrice(new Date(1000), 10));
@@ -38,5 +55,4 @@ public class DecomposeConditional {
 	public static void main(String[] args) {
 		new DecomposeConditional().test();
 	}
-
 }
