@@ -7,24 +7,14 @@ public class DecomposeConditional {
 		  public double summerRate;
 		  public double winterRate;
 		  public double winterServiceCharge;
+		  
 		  public Stadium(double summer, double winter, double service) {
 			  this.summerRate = summer;
 			  this.winterRate = winter;
 			  this.winterServiceCharge = service;
 		  }
 
-		  public double getTicketPrice(Date date, int quantity) {
-		    double charge;
-		    if (date.before(SUMMER_START) || date.after(SUMMER_END)) {
-		      charge = quantity * winterRate + winterServiceCharge;
-		    }
-		    else {
-		      charge = quantity * summerRate;
-		    }
-		    return charge;
-		  }
 
-		//TODO condition completed
 		public double getTicketPrice(Date date, int quantity) {
 			if (isWinterSeason(date)) {
 				return calculateWinterCharge(quantity);

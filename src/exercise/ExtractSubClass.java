@@ -18,7 +18,6 @@ public class ExtractSubClass {
         public abstract int getUnitPrice();
     }
 
-	
     class PartsItem extends JobItem {
         private int unitPrice;
 
@@ -33,7 +32,6 @@ public class ExtractSubClass {
         }
     }
 
-    
     class LaborItem extends JobItem {
         private Employee employee;
 
@@ -47,7 +45,6 @@ public class ExtractSubClass {
             return employee.getRate();
         }
     }
-    
 
     class Employee {
         private int rate;
@@ -60,7 +57,6 @@ public class ExtractSubClass {
             return rate;
         }
     }
-    
 
     public void action() {
         Employee kent = new Employee(50);
@@ -70,7 +66,6 @@ public class ExtractSubClass {
         System.out.println(total);
     }
 
-    
     public static void main(String[] args) {
         new ExtractSubClass().action();
     }
